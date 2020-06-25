@@ -1,67 +1,68 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import TagsContainer from '../containers/TagsContainer';
 
 import './New.css';
 
-class New extends Component {
-  state = {
-    impage: null,
-    author: '',
-    place: '',
-    description: '',
-    hashtags: '',
-  };
+const New = () => {
+  const [form, setForm] = useState([
+    { author: '' },
+    { place: '' },
+    { description: '' },
+    { hashtags: '' },
+  ]);
+  const { author, place, description, hashtags } = form;
 
-  handleChange = (e) => {
-    this.setState({
+  const onChange = (e) => {
+    const nextForm = {
+      ...form,
       [e.target.name]: e.target.value,
-    });
+    };
+    setForm(nextForm);
   };
-
-  handleClick = () => {
-    alert(this.state.author + ': ' + this.state.place);
-    this.setState({
+  const onClick = () => {
+    setForm({
       author: '',
       place: '',
     });
   };
 
-  render() {
-    return (
+  return (
+    <div>
       <form id="new-post">
         <input type="file" />
         <input
           type="text"
           name="author"
           placeholder="아이디"
-          value={this.state.author}
-          onChange={this.handleChange}
+          value={author}
+          onChange={onChange}
         />
         <input
           type="text"
           name="place"
           placeholder="위치 추가"
-          value={this.state.place}
-          onChange={this.handleChange}
+          value={place}
+          onChange={onChange}
         />
         <input
           type="text"
           name="description"
           placeholder="문구 입력..."
-          value={this.state.description}
-          onChange={this.handleChange}
+          value={description}
+          onChange={onChange}
         />
         <input
           type="text"
           name="hashtags"
           placeholder="태그하기"
-          value={this.state.hashtags}
-          onChange={this.handleChange}
+          value={hashtags}
+          onChange={onChange}
         />
 
-        <button onClick={this.handleClick}>작성하기</button>
+        <button onClick={onClick}>작성하기</button>
       </form>
-    );
-  }
-}
-
+      <TagsContainer />
+    </div>
+  );
+};
 export default New;
