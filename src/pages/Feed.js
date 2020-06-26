@@ -1,6 +1,4 @@
-import React, { Component } from 'react';
-
-import TagsContainer from '../containers/TagsContainer';
+import React, { useState } from 'react';
 
 import './Feed.css';
 
@@ -8,57 +6,74 @@ import more from '../assets/more.svg';
 import like from '../assets/like.svg';
 import comment from '../assets/comment.svg';
 import send from '../assets/send.svg';
-import run from '../assets/run.jpg';
 
-class Feed extends Component {
-  state = {
-    feed: [],
-  };
-  constructor(props) {
-    super(props);
-    this.state = {
-      number: 0,
-    };
-  }
-  render() {
-    const { number } = this.state;
-    return (
-      <div>
-        <section id="post-list">
-          <article>
+const Feed = () => {
+  const [posts] = useState([
+    {
+      id: 1,
+      name: '우석',
+      place: '제주',
+      description: '설명1',
+      hashtags: '#해 #바 #라 #기',
+    },
+    {
+      id: 2,
+      name: '철수',
+      place: '서울',
+      description: '설명2',
+      hashtags: '#해 #빛',
+    },
+    {
+      id: 3,
+      name: '영희',
+      place: '부산',
+      description: '설명3',
+      hashtags: '#해 #마',
+    },
+    {
+      id: 4,
+      name: '영구',
+      place: '광주',
+      description: '설명4',
+      hashtags: '#해 #리',
+    },
+  ]);
+
+  return (
+    <div>
+      <section id="post-list">
+        {posts.map((post) => (
+          <article key={post.id}>
             <header>
               <div className="user-info">
-                <span>dylan_w.s</span>
-                <span className="place">제주 이호테우해변</span>
+                <span>{post.name}</span>
+
+                <span className="place">{post.place}</span>
               </div>
               <img src={more} alt={more} />
             </header>
-            <img src={run} alt={run} />
+
             <footer>
               <div className="actions">
-                <button
-                  type="button"
-                  onClick={() => this.setState({ number: number + 1 })}
-                >
+                <button type="button">
                   <img src={like} alt={like} />
                 </button>
                 <img src={comment} alt={comment} />
                 <img src={send} alt={send} />
               </div>
 
-              <strong> {number} 명이 좋아합니다. </strong>
+              <strong> 명이 좋아합니다. </strong>
               <p>
-                "내가 환경미화 한 길을 달린다"
-                <span>#야간세 #제주올레 #이호</span>
+                {post.description}
+                {post.img}
+                <span>{post.hashtags}</span>
               </p>
             </footer>
           </article>
-
-          <TagsContainer />
-        </section>
-      </div>
-    );
-  }
-}
+        ))}
+      </section>
+    </div>
+  );
+};
 
 export default Feed;

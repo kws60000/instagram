@@ -1,10 +1,17 @@
 import React from 'react';
 import './Tags.css';
+import more from '../assets/more.svg';
 
 const TagItem = ({ tag }) => {
   return (
-    <div>
-      <span>{tag.text}</span>
+    <div className="real">
+      <header>
+        <div className="user-info">
+          <span>{tag.text}</span>
+          <span className="place"></span>
+        </div>
+        <img src={more} alt="Mais" />
+      </header>
     </div>
   );
 };

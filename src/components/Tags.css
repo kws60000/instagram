@@ -1,12 +1,24 @@
-section#tagList {
+div.please {
     width: 100%;
     max-width: 580px;
     margin: 0 auto;
     padding: 0 30px;
 }
 
-div.please {
+div.real {
     background: #fff;
     border: 1px solid #ddd;
     margin-top: 30px;
+}
+
+div.real header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+div.real header .user-info {
+    display: flex;
+    flex-direction: column;
 }
