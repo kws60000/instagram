@@ -1,12 +1,12 @@
-const CHANGE_INPUT = 'tags/CHANGE_INPUT';
-const INSERT = 'tags/INSERT';
+const CHANGE_INPUT = 'add/CHANGE_INPUT';
+const INSERT = 'add/INSERT';
 
 export const changeInput = (input) => ({
   type: CHANGE_INPUT,
   input,
 });
 
-let id = 1;
+let id = 5;
 export const insert = (text) => ({
   type: INSERT,
   tag: {
@@ -25,7 +25,7 @@ const initalState = {
   ],
 };
 
-function tags(state = initalState, action) {
+function add(state = initalState, action) {
   switch (action.type) {
     case CHANGE_INPUT:
       return {
@@ -43,4 +43,4 @@ function tags(state = initalState, action) {
   }
 }
 
-export default tags;
+export default add;

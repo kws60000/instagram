@@ -8,6 +8,7 @@ import comment from '../assets/comment.svg';
 import send from '../assets/send.svg';
 
 const Feed = () => {
+  const [likes, setLikes] = useState(0);
   const [posts] = useState([
     {
       id: 1,
@@ -52,17 +53,16 @@ const Feed = () => {
               </div>
               <img src={more} alt={more} />
             </header>
-
             <footer>
               <div className="actions">
-                <button type="button">
+                <button type="button" onClick={() => setLikes(likes + 1)}>
                   <img src={like} alt={like} />
                 </button>
                 <img src={comment} alt={comment} />
                 <img src={send} alt={send} />
               </div>
 
-              <strong> 명이 좋아합니다. </strong>
+              <strong>{likes} 명이 좋아합니다. </strong>
               <p>
                 {post.description}
                 {post.img}

@@ -1,34 +1,39 @@
-import React, { useState } from 'react';
-import TagsContainer from '../containers/TagsContainer';
+import React from 'react';
 
 import './New.css';
 
-const New = () => {
-  const [form, setForm] = useState([
-    { author: '' },
-    { place: '' },
-    { description: '' },
-    { hashtags: '' },
-  ]);
-  const { author, place, description, hashtags } = form;
+const PostItem = (post) => {
+  return (
+    <span>
+      {post.author}
+      {post.place}
+      {post.description}
+      {post.hashtags}
+    </span>
+  );
+};
 
-  const onChange = (e) => {
-    const nextForm = {
-      ...form,
-      [e.target.name]: e.target.value,
-    };
-    setForm(nextForm);
-  };
-  const onClick = () => {
-    setForm({
-      author: '',
-      place: '',
-    });
-  };
+const New = ({
+  author,
+  place,
+  description,
+  hashtags,
 
+  onChangeInput,
+  onInsert,
+}) => {
+  const onSubmit = (e) => {
+    e.preventDefault();
+    onInsert({ author, place, description, hashtags });
+    onChangeInput('');
+  };
+  const post = { author, place, description, hashtags };
+  const posts = [{ post }];
+
+  const onChange = (e) => onChangeInput(e.target.value); // 원하는 값을 덮어 씌우기
   return (
     <div>
-      <form id="new-post">
+      <form onSubmit={onSubmit}>
         <input type="file" />
         <input
           type="text"
@@ -59,9 +64,11 @@ const New = () => {
           onChange={onChange}
         />
 
-        <button onClick={onClick}>작성하기</button>
+        <button type="submit">작성하기</button>
       </form>
-      <TagsContainer />
+      {posts.map((post) => (
+        <PostItem post={post} key={post.id} />
+      ))}
     </div>
   );
 };

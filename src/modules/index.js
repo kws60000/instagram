@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import tags from './tags';
+import add from './add';
+import neww from './neww';
 
 const rootReducer = combineReducers({
-  tags,
+  add,
+  neww,
 });
 
 export default rootReducer;

@@ -1,19 +1,7 @@
 import React from 'react';
-import './Tags.css';
-import more from '../assets/more.svg';
 
 const TagItem = ({ tag }) => {
-  return (
-    <div className="real">
-      <header>
-        <div className="user-info">
-          <span>{tag.text}</span>
-          <span className="place"></span>
-        </div>
-        <img src={more} alt="Mais" />
-      </header>
-    </div>
-  );
+  return <span>{tag.text}</span>;
 };
 
 const Tags = ({ input, tags, onChangeInput, onInsert }) => {
