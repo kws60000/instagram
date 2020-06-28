@@ -2,23 +2,11 @@ import React from 'react';
 
 import './New.css';
 
-const PostItem = (post) => {
-  return (
-    <span>
-      {post.author}
-      {post.place}
-      {post.description}
-      {post.hashtags}
-    </span>
-  );
-};
-
 const New = ({
   author,
   place,
   description,
   hashtags,
-
   onChangeInput,
   onInsert,
 }) => {
@@ -27,8 +15,6 @@ const New = ({
     onInsert({ author, place, description, hashtags });
     onChangeInput('');
   };
-  const post = { author, place, description, hashtags };
-  const posts = [{ post }];
 
   const onChange = (e) => onChangeInput(e.target.value); // 원하는 값을 덮어 씌우기
   return (
@@ -66,9 +52,6 @@ const New = ({
 
         <button type="submit">작성하기</button>
       </form>
-      {posts.map((post) => (
-        <PostItem post={post} key={post.id} />
-      ))}
     </div>
   );
 };

@@ -6,7 +6,7 @@ export const changeInput = (input) => ({
   input,
 });
 
-let id = 5;
+let id = 1;
 export const insert = (text) => ({
   type: INSERT,
   tag: {

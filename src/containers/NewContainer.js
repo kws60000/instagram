@@ -9,7 +9,6 @@ const NewContainer = ({
   description,
   hashtags,
   post,
-  posts,
   changeInput,
   insert,
 }) => {
@@ -21,7 +20,6 @@ const NewContainer = ({
       description={description}
       hashtags={hashtags}
       post={post}
-      posts={posts}
       // 액션을 디스패치 하는 함수들을 props로 넣어줍니다.
       onChangeInput={changeInput}
       onInsert={insert}

@@ -7,38 +7,11 @@ import like from '../assets/like.svg';
 import comment from '../assets/comment.svg';
 import send from '../assets/send.svg';
 
+import eyes from '../assets/eyes.jpg';
+
 const Feed = () => {
   const [likes, setLikes] = useState(0);
-  const [posts] = useState([
-    {
-      id: 1,
-      name: '우석',
-      place: '제주',
-      description: '설명1',
-      hashtags: '#해 #바 #라 #기',
-    },
-    {
-      id: 2,
-      name: '철수',
-      place: '서울',
-      description: '설명2',
-      hashtags: '#해 #빛',
-    },
-    {
-      id: 3,
-      name: '영희',
-      place: '부산',
-      description: '설명3',
-      hashtags: '#해 #마',
-    },
-    {
-      id: 4,
-      name: '영구',
-      place: '광주',
-      description: '설명4',
-      hashtags: '#해 #리',
-    },
-  ]);
+  const [posts] = useState([]);
 
   return (
     <div>
@@ -47,12 +20,13 @@ const Feed = () => {
           <article key={post.id}>
             <header>
               <div className="user-info">
-                <span>{post.name}</span>
+                <span>{post.author}</span>
 
                 <span className="place">{post.place}</span>
               </div>
               <img src={more} alt={more} />
             </header>
+            <img src={eyes} alt={eyes}></img>
             <footer>
               <div className="actions">
                 <button type="button" onClick={() => setLikes(likes + 1)}>
@@ -62,7 +36,7 @@ const Feed = () => {
                 <img src={send} alt={send} />
               </div>
 
-              <strong>{likes} 명이 좋아합니다. </strong>
+              <strong>12{likes} 명이 좋아합니다. </strong>
               <p>
                 {post.description}
                 {post.img}
