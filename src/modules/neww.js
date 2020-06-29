@@ -1,15 +1,15 @@
 const CHANGE_INPUT = 'neww/CHANGE_INPUT';
 const INSERT = 'neww/INSERT';
 
-export const changeInput = ({ author, place, description, hashtags }) => ({
+export const changeInput = ({ inputa, inputp, inputd, inputh }) => ({
   type: CHANGE_INPUT,
-  author,
-  place,
-  description,
-  hashtags,
+  inputa,
+  inputp,
+  inputd,
+  inputh,
 });
 
-let id = 5;
+let id = 1;
 export const insert = ({ author, place, description, hashtags }) => ({
   type: INSERT,
   post: {
@@ -21,7 +21,11 @@ export const insert = ({ author, place, description, hashtags }) => ({
   },
 });
 
-const initalState = {
+export const initalState = {
+  inputa: '',
+  inputp: '',
+  inputd: '',
+  inputh: '',
   posts: {
     post: [
       {
@@ -61,19 +65,19 @@ function neww(state = initalState, action) {
     case CHANGE_INPUT:
       return {
         ...state,
-        author: action.author,
-        place: action.place,
-        description: action.description,
-        hashtags: action.hashtags,
+        inputa: action.inputa,
+        inputp: action.inputp,
+        inputd: action.inputd,
+        inputh: action.inputh,
       };
     case INSERT:
       return {
         ...state,
         post: state.post.concat(
-          action.author,
-          action.place,
-          action.description,
-          action.hashtags,
+          action.inputa,
+          action.inputp,
+          action.inputd,
+          action.inputh,
         ),
         posts: state.posts.concat(action.post),
       };

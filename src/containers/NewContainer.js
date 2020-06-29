@@ -15,10 +15,10 @@ const NewContainer = ({
   return (
     <New
       //상태를 props로 넣어준 상황
-      author={author}
-      place={place}
-      description={description}
-      hashtags={hashtags}
+      inputa={author}
+      inputp={place}
+      inputd={description}
+      inputh={hashtags}
       post={post}
       // 액션을 디스패치 하는 함수들을 props로 넣어줍니다.
       onChangeInput={changeInput}
@@ -31,10 +31,13 @@ export default connect(
   ({ post }) => ({
     //리덕스 스토어의 상태를 조회해서 어떤 것들을 props 로 넣어줄지 정의합니다.
     //현재 리덕스 상태를 파라미터로 받아옵니다.
-    author: post.author,
-    place: post.place,
-    description: post.description,
-    hashtags: post.hashtags,
+    //내가 생각하기에 왼쪽은 스토어의 상태를 받는 컴포넌트의 props
+    //오른쪽은 리덕스 스토어 안의 상태인 듯
+    author: post.inputa,
+    inputp: post.inputp,
+    inputd: post.inputd,
+    inputh: post.inputh,
+    post: post.post,
   }),
   {
     //액션을 디스패치하는 함수를 만들어서 props로 넣어줍니다.

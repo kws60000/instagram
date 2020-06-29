@@ -3,16 +3,21 @@ import React from 'react';
 import './New.css';
 
 const New = ({
+  inputa,
+  inputp,
+  inputd,
+  inputh,
+  onChangeInput,
+  onInsert,
+  post,
   author,
   place,
   description,
   hashtags,
-  onChangeInput,
-  onInsert,
 }) => {
   const onSubmit = (e) => {
     e.preventDefault();
-    onInsert({ author, place, description, hashtags });
+    onInsert({ inputa, inputp, inputd, inputh });
     onChangeInput('');
   };
 
@@ -25,32 +30,37 @@ const New = ({
           type="text"
           name="author"
           placeholder="아이디"
-          value={author}
+          value={inputa}
           onChange={onChange}
         />
         <input
           type="text"
           name="place"
           placeholder="위치 추가"
-          value={place}
+          value={inputp}
           onChange={onChange}
         />
         <input
           type="text"
           name="description"
           placeholder="문구 입력..."
-          value={description}
+          value={inputd}
           onChange={onChange}
         />
         <input
           type="text"
           name="hashtags"
           placeholder="태그하기"
-          value={hashtags}
+          value={inputh}
           onChange={onChange}
         />
 
         <button type="submit">작성하기</button>
+        {post}
+        {author}
+        {place}
+        {description}
+        {hashtags}
       </form>
     </div>
   );
