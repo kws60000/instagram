@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import './Header.css';
+import "./Header.css";
 
-import logo from '../assets/logo.svg';
-import camera from '../assets/camera.svg';
+import logo from "../assets/logo.svg";
+import camera from "../assets/camera.svg";
 
 export default function Header() {
   return (
@@ -13,7 +13,7 @@ export default function Header() {
         <Link to="/">
           <img src={logo} alt={logo} />
         </Link>
-        <Link to="/new">
+        <Link to="/write">
           <img src={camera} alt={camera} />
         </Link>
       </div>
